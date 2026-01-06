@@ -16,7 +16,7 @@ class IsInitialisedFeature extends UnitFeature {
                 Given(
                   'The BaseViewModel is not initialised yet',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.isInitialised, false);
+                    expect(systemUnderTest.isInitialised.value, false);
                     log.success('BaseViewModel was not initialised!');
                   },
                 ),
@@ -29,7 +29,7 @@ class IsInitialisedFeature extends UnitFeature {
                 Then(
                   'the BaseViewModel should be initialised',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.isInitialised, true);
+                    expect(systemUnderTest.isInitialised.value, true);
                     log.success('BaseViewModel was initialised!');
                   },
                 )

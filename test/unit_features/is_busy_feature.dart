@@ -16,7 +16,7 @@ class IsBusyFeature extends UnitFeature {
                 Given(
                   'The BaseViewModel is not busy',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.isBusy, false);
+                    expect(systemUnderTest.isBusy.value, false);
                     log.success('BaseViewModel was not busy');
                   },
                 ),
@@ -29,7 +29,7 @@ class IsBusyFeature extends UnitFeature {
                 Then(
                   'the BaseViewModel should be busy',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.isBusy, true);
+                    expect(systemUnderTest.isBusy.value, true);
                     log.success('Boolean status was busy!');
                   },
                 ),
@@ -42,7 +42,7 @@ class IsBusyFeature extends UnitFeature {
                 Then(
                   'the BaseViewModel should no longer be busy',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.isBusy, false);
+                    expect(systemUnderTest.isBusy.value, false);
                     log.success('BaseViewModel was not busy!');
                   },
                 )

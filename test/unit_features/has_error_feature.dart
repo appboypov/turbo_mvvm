@@ -16,7 +16,7 @@ class HasErrorFeature extends UnitFeature {
                 Given(
                   'The BaseViewModel has no error',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.hasError, false);
+                    expect(systemUnderTest.hasError.value, false);
                     log.success('BaseViewModel did not have an error');
                   },
                 ),
@@ -29,7 +29,7 @@ class HasErrorFeature extends UnitFeature {
                 Then(
                   'the BaseViewModel should have an error',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.hasError, true);
+                    expect(systemUnderTest.hasError.value, true);
                     log.success('Error status was true!');
                   },
                 ),
@@ -42,7 +42,7 @@ class HasErrorFeature extends UnitFeature {
                 Then(
                   'the BaseViewModel should no longer have an error',
                   (systemUnderTest, log, box, mocks, [example]) {
-                    expect(systemUnderTest.hasError, false);
+                    expect(systemUnderTest.hasError.value, false);
                     log.success('BaseViewModel did not have an error!');
                   },
                 )
