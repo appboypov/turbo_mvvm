@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 /// Base view model class.
 abstract class AkeBaseViewModel<E extends Object?> extends ChangeNotifier {
