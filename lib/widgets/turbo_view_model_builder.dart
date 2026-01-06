@@ -25,7 +25,9 @@ class TurboViewModelBuilder<T extends TurboViewModel> extends StatefulWidget {
   final Widget? child;
 
   /// Builder method that builds the widget tree.
-  final Widget Function(BuildContext context, T model, bool isInitialised, Widget? child) _builder;
+  final Widget Function(
+          BuildContext context, T model, bool isInitialised, Widget? child)
+      _builder;
 
   /// Builder method that provides the [TurboViewModel].
   final T Function() _viewModelBuilder;
@@ -43,10 +45,12 @@ class TurboViewModelBuilder<T extends TurboViewModel> extends StatefulWidget {
   final void Function(T model)? onDispose;
 
   @override
-  TurboViewModelBuilderState<T> createState() => TurboViewModelBuilderState<T>();
+  TurboViewModelBuilderState<T> createState() =>
+      TurboViewModelBuilderState<T>();
 }
 
-class TurboViewModelBuilderState<T extends TurboViewModel> extends State<TurboViewModelBuilder<T>> {
+class TurboViewModelBuilderState<T extends TurboViewModel>
+    extends State<TurboViewModelBuilder<T>> {
   /// The current [TurboViewModel].
   late final T _viewModel;
 
