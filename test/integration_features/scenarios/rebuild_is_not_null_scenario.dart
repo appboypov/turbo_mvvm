@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gherkin_integration_test/integration_test.dart';
-import 'package:turbo_mvvm/data/models/base_view_model.dart';
+import 'package:turbo_mvvm/data/models/turbo_view_model.dart';
 
 import '../../models/base_view_model_implementation.dart';
 
@@ -8,23 +8,23 @@ class RebuildIsNotNullScenario extends IntegrationScenario {
   RebuildIsNotNullScenario()
       : super(
           description:
-              'Testing the rebuild method initialisation of the ViewModelBuilder',
+              'Testing the rebuild method initialisation of the TurboViewModelBuilder',
           steps: [
             Given(
-              'The BaseViewModel is built',
+              'The TurboViewModel is built',
               (tester, log, box, mocks, [example, binding]) async {
-                log.info('Building the BaseViewModel..');
+                log.info('Building the TurboViewModel..');
                 final baseViewModel =
                     BaseViewModelImplementation(isMock: false);
-                log.success('BaseViewModel built!');
+                log.success('TurboViewModel built!');
                 box.write(#baseViewModel, baseViewModel);
               },
             ),
             When(
-              'the ViewModelBuilder is initialised',
+              'the TurboViewModelBuilder is initialised',
               (tester, log, box, mocks, [example, binding]) async {
                 await tester.pumpWidget(
-                  ViewModelBuilder<BaseViewModelImplementation>(
+                  TurboViewModelBuilder<BaseViewModelImplementation>(
                     builder: (context, model, isInitialised, child) =>
                         const SizedBox(),
                     viewModelBuilder: () => box.read(#baseViewModel),
@@ -34,7 +34,7 @@ class RebuildIsNotNullScenario extends IntegrationScenario {
               },
             ),
             Then(
-              'The BaseViewModel.rebuild should be initialised and not be null',
+              'The TurboViewModel.rebuild should be initialised and not be null',
               (tester, log, box, mocks, [example, binding]) {
                 box.read<BaseViewModelImplementation>(#baseViewModel).rebuild();
                 log.success('Method did not throw!');

@@ -9,7 +9,7 @@ class InitStateFeature extends IntegrationFeature {
   InitStateFeature()
       : super(
           description:
-              'Tests the ViewModelBuilder\'s proper initialisation during the initState method',
+              'Tests the TurboViewModelBuilder\'s proper initialisation during the initState method',
           scenarios: [
             ArgumentsAreTransmittedScenario(),
             DisposableContextIsNotNullScenario(),

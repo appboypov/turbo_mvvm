@@ -6,18 +6,18 @@ import '../models/base_view_model_implementation.dart';
 class HasErrorFeature extends UnitFeature {
   HasErrorFeature()
       : super(
-          description: 'BaseViewModel.isError',
+          description: 'TurboViewModel.isError',
           scenarios: [
             UnitScenario<BaseViewModelImplementation, UnitExample>(
-              description: 'Setting error status on the BaseViewModel',
+              description: 'Setting error status on the TurboViewModel',
               systemUnderTest: (mocks) =>
                   BaseViewModelImplementation(isMock: true),
               steps: [
                 Given(
-                  'The BaseViewModel has no error',
+                  'The TurboViewModel has no error',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.hasError.value, false);
-                    log.success('BaseViewModel did not have an error');
+                    log.success('TurboViewModel did not have an error');
                   },
                 ),
                 When(
@@ -27,7 +27,7 @@ class HasErrorFeature extends UnitFeature {
                   },
                 ),
                 Then(
-                  'the BaseViewModel should have an error',
+                  'the TurboViewModel should have an error',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.hasError.value, true);
                     log.success('Error status was true!');
@@ -40,10 +40,10 @@ class HasErrorFeature extends UnitFeature {
                   },
                 ),
                 Then(
-                  'the BaseViewModel should no longer have an error',
+                  'the TurboViewModel should no longer have an error',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.hasError.value, false);
-                    log.success('BaseViewModel did not have an error!');
+                    log.success('TurboViewModel did not have an error!');
                   },
                 )
               ],

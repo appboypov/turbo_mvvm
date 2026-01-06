@@ -9,7 +9,7 @@ void main() {
 class VetoWidgetTest extends IntegrationTest {
   VetoWidgetTest()
       : super(
-          description: 'Tests the ViewModelBuilder functionality',
+          description: 'Tests the TurboViewModelBuilder functionality',
           features: [
             InitStateFeature(),
           ],

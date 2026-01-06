@@ -1,6 +1,6 @@
 import 'package:example/views/second/second_veto_view_arguments.dart';
 import 'package:flutter/material.dart';
-import 'package:turbo_mvvm/data/models/base_view_model.dart';
+import 'package:turbo_mvvm/turbo_mvvm.dart';
 
 import 'second_veto_view_model.dart';
 
@@ -17,7 +17,7 @@ class SecondVetoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SecondVetoViewModel>(
+    return TurboViewModelBuilder<SecondVetoViewModel>(
       argumentBuilder: () => _secondVetoViewArguments,
       builder: (context, model, isInitialised, child) {
         return Scaffold(

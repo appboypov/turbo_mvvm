@@ -1,9 +1,9 @@
 import 'package:example/views/second/second_veto_view_arguments.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:turbo_mvvm/data/models/base_view_model.dart';
+import 'package:turbo_mvvm/turbo_mvvm.dart';
 
-class SecondVetoViewModel extends BaseViewModel<SecondVetoViewArguments> {
+class SecondVetoViewModel extends TurboViewModel<SecondVetoViewArguments> {
   SecondVetoViewModel();
 
   final ValueNotifier<int> _firstValue = ValueNotifier(0);

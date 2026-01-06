@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin_integration_test/integration_test.dart';
-import 'package:turbo_mvvm/data/models/base_view_model.dart';
+import 'package:turbo_mvvm/data/models/turbo_view_model.dart';
 
 import '../../models/base_view_model_implementation.dart';
 
@@ -11,23 +11,23 @@ class ArgumentsAreTransmittedScenario extends IntegrationScenario {
   ArgumentsAreTransmittedScenario()
       : super(
           description:
-              'Testing the arguments functionality of the ViewModelBuilder',
+              'Testing the arguments functionality of the TurboViewModelBuilder',
           steps: [
             Given(
-              'The BaseViewModel is built',
+              'The TurboViewModel is built',
               (tester, log, box, mocks, [example, binding]) async {
-                log.info('Building the BaseViewModel..');
+                log.info('Building the TurboViewModel..');
                 final baseViewModel =
                     BaseViewModelImplementation<_DummyArguments>(isMock: false);
-                log.success('BaseViewModel built!');
+                log.success('TurboViewModel built!');
                 box.write(#baseViewModel, baseViewModel);
               },
             ),
             When(
-              'The ViewModelBuilder is initialised with a String argument called \'$_argument\'',
+              'The TurboViewModelBuilder is initialised with a String argument called \'$_argument\'',
               (tester, log, box, mocks, [example, binding]) async {
                 await tester.pumpWidget(
-                  ViewModelBuilder<BaseViewModelImplementation>(
+                  TurboViewModelBuilder<BaseViewModelImplementation>(
                     argumentBuilder: () =>
                         const _DummyArguments(cookieType: _argument),
                     builder: (context, model, isInitialised, child) =>
@@ -40,7 +40,7 @@ class ArgumentsAreTransmittedScenario extends IntegrationScenario {
               },
             ),
             Then(
-              'The BaseViewModel.arguments should be $_argument',
+              'The TurboViewModel.arguments should be $_argument',
               (tester, log, box, mocks, [example, binding]) {
                 expect(
                   box

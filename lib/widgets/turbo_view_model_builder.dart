@@ -1,8 +1,8 @@
-part of '../data/models/base_view_model.dart';
+part of '../data/models/turbo_view_model.dart';
 
-/// Used to build and provide a [BaseViewModel] to the widget tree.
-class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
-  const ViewModelBuilder({
+/// Used to build and provide a [TurboViewModel] to the widget tree.
+class TurboViewModelBuilder<T extends TurboViewModel> extends StatefulWidget {
+  const TurboViewModelBuilder({
     this.child,
     required Widget Function(
       BuildContext context,
@@ -25,35 +25,32 @@ class ViewModelBuilder<T extends BaseViewModel> extends StatefulWidget {
   final Widget? child;
 
   /// Builder method that builds the widget tree.
-  final Widget Function(
-          BuildContext context, T model, bool isInitialised, Widget? child)
-      _builder;
+  final Widget Function(BuildContext context, T model, bool isInitialised, Widget? child) _builder;
 
-  /// Builder method that provides the [BaseViewModel].
+  /// Builder method that provides the [TurboViewModel].
   final T Function() _viewModelBuilder;
 
-  /// Builder method that provides the [BaseViewModel.initialise] with arguments.
+  /// Builder method that provides the [TurboViewModel.initialise] with arguments.
   final dynamic Function()? _argumentBuilder;
 
-  /// Whether the [BaseViewModel] should listen to [BaseViewModel.notifyListeners] for rebuilds.
+  /// Whether the [TurboViewModel] should listen to [TurboViewModel.notifyListeners] for rebuilds.
   final bool isReactive;
 
-  /// Whether the [ChangeNotifierProvider] should dispose the [BaseViewModel] when it's removed from the widget tree.
+  /// Whether the [ChangeNotifierProvider] should dispose the [TurboViewModel] when it's removed from the widget tree.
   final bool shouldDispose;
 
-  /// Fires when [ViewModelBuilder] is removed from the widget tree.
+  /// Fires when [TurboViewModelBuilder] is removed from the widget tree.
   final void Function(T model)? onDispose;
 
   @override
-  ViewModelBuilderState<T> createState() => ViewModelBuilderState<T>();
+  TurboViewModelBuilderState<T> createState() => TurboViewModelBuilderState<T>();
 }
 
-class ViewModelBuilderState<T extends BaseViewModel>
-    extends State<ViewModelBuilder<T>> {
-  /// The current [BaseViewModel].
+class TurboViewModelBuilderState<T extends TurboViewModel> extends State<TurboViewModelBuilder<T>> {
+  /// The current [TurboViewModel].
   late final T _viewModel;
 
-  /// Initialises the [BaseViewModel] and its needed methods.
+  /// Initialises the [TurboViewModel] and its needed methods.
   @override
   void initState() {
     _viewModel = widget._viewModelBuilder()
@@ -64,7 +61,7 @@ class ViewModelBuilderState<T extends BaseViewModel>
     super.initState();
   }
 
-  /// Disposes the [BaseViewModel] and its given methods.
+  /// Disposes the [TurboViewModel] and its given methods.
   @override
   void dispose() {
     widget.onDispose?.call(_viewModel);

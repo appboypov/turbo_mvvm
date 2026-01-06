@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin_integration_test/integration_test.dart';
-import 'package:turbo_mvvm/data/models/base_view_model.dart';
+import 'package:turbo_mvvm/data/models/turbo_view_model.dart';
 
 import '../../models/base_view_model_implementation.dart';
 
@@ -9,23 +9,23 @@ class MountedIsTrueScenario extends IntegrationScenario {
   MountedIsTrueScenario()
       : super(
           description:
-              'Testing the mounted method initialisation of the ViewModelBuilder',
+              'Testing the mounted method initialisation of the TurboViewModelBuilder',
           steps: [
             Given(
-              'The BaseViewModel is built',
+              'The TurboViewModel is built',
               (tester, log, box, mocks, [example, binding]) async {
-                log.info('Building the BaseViewModel..');
+                log.info('Building the TurboViewModel..');
                 final baseViewModel =
                     BaseViewModelImplementation(isMock: false);
-                log.success('BaseViewModel built!');
+                log.success('TurboViewModel built!');
                 box.write(#baseViewModel, baseViewModel);
               },
             ),
             When(
-              'the ViewModelBuilder is initialised',
+              'the TurboViewModelBuilder is initialised',
               (tester, log, box, mocks, [example, binding]) async {
                 await tester.pumpWidget(
-                  ViewModelBuilder<BaseViewModelImplementation>(
+                  TurboViewModelBuilder<BaseViewModelImplementation>(
                     builder: (context, model, isInitialised, child) =>
                         const SizedBox(),
                     viewModelBuilder: () => box.read(#baseViewModel),
@@ -35,14 +35,14 @@ class MountedIsTrueScenario extends IntegrationScenario {
               },
             ),
             Then(
-              'The BaseViewModel.isMounted method should return true',
+              'The TurboViewModel.isMounted method should return true',
               (tester, log, box, mocks, [example, binding]) {
                 expect(
                     box
                         .read<BaseViewModelImplementation>(#baseViewModel)
                         .isMounted,
                     true);
-                log.success('BaseViewModel was mounted!');
+                log.success('TurboViewModel was mounted!');
               },
             ),
           ],

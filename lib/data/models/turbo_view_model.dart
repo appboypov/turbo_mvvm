@@ -2,10 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+part '../../widgets/turbo_view_model_builder.dart';
+
 /// Base view model class.
-abstract class AkeBaseViewModel<E extends Object?> extends ChangeNotifier {
-  /// Holds arguments of type [E] provided by the [TurboViewModelBuilder._argumentBuilder].
-  late final E? arguments;
+abstract class TurboViewModel<A> extends ChangeNotifier {
+  /// Holds arguments of type [A] provided by the [TurboViewModelBuilder._argumentBuilder].
+  late final A arguments;
 
   /// Callback that is used by [isMounted] to check whether the parent [TurboViewModelBuilder] is mounted.
   late bool Function()? _mounted;

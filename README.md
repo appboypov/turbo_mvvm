@@ -13,8 +13,8 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Core Concepts](#core-concepts)
-  - [BaseViewModel](#baseviewmodel)
-  - [ViewModelBuilder](#viewmodelbuilder)
+  - [TurboViewModel](#turboviewmodel)
+  - [TurboViewModelBuilder](#turboviewmodelbuilder)
   - [Mixins](#mixins)
   - [BusyService](#busyservice)
 - [Usage Guide](#usage-guide)
@@ -67,20 +67,20 @@
 
 ## Core Concepts
 
-### BaseViewModel
-The heart of the Turbo MVVM package. Your ViewModels should extend `BaseViewModel<A>`, where `A` is the type of arguments you want to pass to the ViewModel.
+### TurboViewModel
+The heart of the Turbo MVVM package. Your ViewModels should extend `TurboViewModel<A>`, where `A` is the type of arguments you want to pass to the ViewModel.
 
 Key features:
 - `initialise()`: Called once when the ViewModel is created. Ideal for setting up data, listeners, etc.
 - `dispose()`: Called when the ViewModel is no longer needed. Clean up resources here.
-- `rebuild()`: Notifies listeners (typically the `ViewModelBuilder`) to rebuild the UI.
+- `rebuild()`: Notifies listeners (typically the `TurboViewModelBuilder`) to rebuild the UI.
 - `isMounted`: A boolean getter to check if the associated View (widget) is currently in the widget tree.
 - `context`: Provides safe access to the `BuildContext`.
-- `arguments`: Holds arguments passed via `ViewModelBuilder`.
+- `arguments`: Holds arguments passed via `TurboViewModelBuilder`.
 - `isInitialised`: A `ValueListenable<bool>` that indicates if `initialise()` has completed.
 
-### ViewModelBuilder
-A widget that builds and provides a `BaseViewModel` to the widget tree. It listens to the ViewModel and rebuilds its child widgets when `rebuild()` is called or when other `ValueNotifier`s within the ViewModel change.
+### TurboViewModelBuilder
+A widget that builds and provides a `TurboViewModel` to the widget tree. It listens to the ViewModel and rebuilds its child widgets when `rebuild()` is called or when other `ValueNotifier`s within the ViewModel change.
 
 Key parameters:
 - `viewModelBuilder`: A function that returns an instance of your ViewModel.
@@ -113,13 +113,13 @@ A singleton service for managing a global busy state. This is useful for showing
 Here's a step-by-step guide to using Turbo MVVM:
 
 ### 1. Create your ViewModel
-Extend `BaseViewModel` and add your business logic, state variables, and any desired mixins.
+Extend `TurboViewModel` and add your business logic, state variables, and any desired mixins.
 
 ```dart
 import 'package:flutter/foundation.dart';
 import 'package:turbo_mvvm/turbo_mvvm.dart';
 
-class MyViewModel extends BaseViewModel<String> // String is the argument type
+class MyViewModel extends TurboViewModel<String> // String is the argument type
     with BusyManagement, ErrorManagement {
   
   final ValueNotifier<int> _counter = ValueNotifier(0);
@@ -169,7 +169,7 @@ class MyViewModel extends BaseViewModel<String> // String is the argument type
 ```
 
 ### 2. Connect ViewModel to your View
-Use `ViewModelBuilder` in your widget to provide and react to your ViewModel.
+Use `TurboViewModelBuilder` in your widget to provide and react to your ViewModel.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -180,7 +180,7 @@ class MyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<MyViewModel>(
+    return TurboViewModelBuilder<MyViewModel>(
       viewModelBuilder: () => MyViewModel(),
       argumentBuilder: () => "World",
       builder: (context, model, isInitialised, child) {
@@ -254,7 +254,7 @@ class MyView extends StatelessWidget {
 ```
 
 ### 3. Accessing ViewModel Properties and Methods
-Inside the `builder` function of `ViewModelBuilder`, access your ViewModel directly and use `ValueListenableBuilder` for fine-grained updates.
+Inside the `builder` function of `TurboViewModelBuilder`, access your ViewModel directly and use `ValueListenableBuilder` for fine-grained updates.
 
 ### 4. Managing Busy State (Local)
 The `BusyManagement` mixin provides:
@@ -295,7 +295,7 @@ Check the `/example` directory for a complete Flutter application demonstrating 
 
 ## Dependencies
 
-- `provider`: Used internally by `ViewModelBuilder` for efficient state propagation.
+- `provider`: Used internally by `TurboViewModelBuilder` for efficient state propagation.
 
 ## Contributing
 

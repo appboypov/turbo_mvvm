@@ -6,18 +6,18 @@ import '../models/base_view_model_implementation.dart';
 class IsInitialisedFeature extends UnitFeature {
   IsInitialisedFeature()
       : super(
-          description: 'BaseViewModel.isInitialised',
+          description: 'TurboViewModel.isInitialised',
           scenarios: [
             UnitScenario<BaseViewModelImplementation, UnitExample>(
-              description: 'Initialising the BaseViewModel',
+              description: 'Initialising the TurboViewModel',
               systemUnderTest: (mocks) =>
                   BaseViewModelImplementation(isMock: true),
               steps: [
                 Given(
-                  'The BaseViewModel is not initialised yet',
+                  'The TurboViewModel is not initialised yet',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.isInitialised.value, false);
-                    log.success('BaseViewModel was not initialised!');
+                    log.success('TurboViewModel was not initialised!');
                   },
                 ),
                 When(
@@ -27,10 +27,10 @@ class IsInitialisedFeature extends UnitFeature {
                   },
                 ),
                 Then(
-                  'the BaseViewModel should be initialised',
+                  'the TurboViewModel should be initialised',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.isInitialised.value, true);
-                    log.success('BaseViewModel was initialised!');
+                    log.success('TurboViewModel was initialised!');
                   },
                 )
               ],

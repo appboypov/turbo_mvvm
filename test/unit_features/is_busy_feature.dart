@@ -6,18 +6,18 @@ import '../models/base_view_model_implementation.dart';
 class IsBusyFeature extends UnitFeature {
   IsBusyFeature()
       : super(
-          description: 'BaseViewModel.isInitialised',
+          description: 'TurboViewModel.isInitialised',
           scenarios: [
             UnitScenario<BaseViewModelImplementation, UnitExample>(
-              description: 'Setting busy status on the BaseViewModel',
+              description: 'Setting busy status on the TurboViewModel',
               systemUnderTest: (mocks) =>
                   BaseViewModelImplementation(isMock: true),
               steps: [
                 Given(
-                  'The BaseViewModel is not busy',
+                  'The TurboViewModel is not busy',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.isBusy.value, false);
-                    log.success('BaseViewModel was not busy');
+                    log.success('TurboViewModel was not busy');
                   },
                 ),
                 When(
@@ -27,7 +27,7 @@ class IsBusyFeature extends UnitFeature {
                   },
                 ),
                 Then(
-                  'the BaseViewModel should be busy',
+                  'the TurboViewModel should be busy',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.isBusy.value, true);
                     log.success('Boolean status was busy!');
@@ -40,10 +40,10 @@ class IsBusyFeature extends UnitFeature {
                   },
                 ),
                 Then(
-                  'the BaseViewModel should no longer be busy',
+                  'the TurboViewModel should no longer be busy',
                   (systemUnderTest, log, box, mocks, [example]) {
                     expect(systemUnderTest.isBusy.value, false);
-                    log.success('BaseViewModel was not busy!');
+                    log.success('TurboViewModel was not busy!');
                   },
                 )
               ],

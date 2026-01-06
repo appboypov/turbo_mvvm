@@ -5,11 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-01-XX
+
+### Changed
+- **BREAKING**: Renamed `BaseViewModel<A>` → `TurboViewModel<A>` for consistency with package naming
+- **BREAKING**: Renamed `ViewModelBuilder<T>` → `TurboViewModelBuilder<T>` for consistency with package naming
+- **BREAKING**: Renamed `ViewModelBuilderState<T>` → `TurboViewModelBuilderState<T>` for consistency with package naming
+- Updated all documentation, examples, and tests to use new class names
+
+### Migration Guide
+To migrate from v1.0.0 to v1.1.0:
+- Replace `BaseViewModel` with `TurboViewModel` in all class declarations
+- Replace `ViewModelBuilder` with `TurboViewModelBuilder` in all widget usage
+- Update imports if using direct file imports (barrel imports remain the same)
+
 ## [1.0.0] - 2025-01-06
 
 ### Added
-- `BaseViewModel` for MVVM pattern implementation
-- `ViewModelBuilder` widget for reactive UI updates
+- `TurboViewModel` (formerly `BaseViewModel`) for MVVM pattern implementation
+- `TurboViewModelBuilder` (formerly `ViewModelBuilder`) widget for reactive UI updates
 - Automatic lifecycle management (`initialise` and `dispose`)
 - `BusyManagement` mixin for local busy states
 - `ErrorManagement` mixin for error handling
@@ -32,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package renamed from `veto` to `turbo_mvvm`
 - Updated import paths to use `package:turbo_mvvm/turbo_mvvm.dart`
 - Integrated Provider package for efficient state propagation
-- Made `BaseViewModel` a `ChangeNotifier`
+- Made `TurboViewModel` (formerly `BaseViewModel`) a `ChangeNotifier`
 - Enhanced busy state management with timeouts
 - Improved error handling
 - Better context access safety
